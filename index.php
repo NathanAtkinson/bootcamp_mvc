@@ -11,5 +11,9 @@ Router::add('/users', '/app/controllers/users/list.php');
 Router::add('/users/register', '/app/controllers/users/register/form.php');
 Router::add('/users/register/process_form/', '/app/controllers/users/register/process_form.php');
 
+
+//making own controller
+Router::add('/food', '/app/controllers/food.php');
+
 // Issue Route
 Router::route();

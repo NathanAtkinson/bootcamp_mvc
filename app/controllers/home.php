@@ -21,3 +21,4 @@ extract($controller->view->vars);
 
 <!-- Notice this welcome variable was created above and passed into the view -->
 <h3><?php echo $welcome; ?></h3>
+<h3><?php echo 'YEAH!!'; ?></h3>
