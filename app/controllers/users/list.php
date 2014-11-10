@@ -30,4 +30,5 @@ extract($controller->view->vars);
 
 <div class="users">
 	<?php echo $users; ?>
+	<?php echo 'test' ?>
 </div>
