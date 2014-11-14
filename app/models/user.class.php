@@ -15,15 +15,15 @@ class User extends Model {
 
 		// Prepare SQL Values
 		$sql_values = [
-			'user_id' => $input['user_id'],
+			// 'user_id' => $input['user_id'],
 			'first_name' => $input['first_name'],
 			'last_name' => $input['last_name'],
-			'email' => $input['email'],
-			'password' => $input['password'],
-			'datetime_added' => 'NOW()'
+			'date_of_birth' => $input['date_of_birth'],
+			'gender' => $input['gender']
 		];
 
 		// Ensure values are encompassed with quote marks
+		//TODO remove datetime added?  It's optional
 		$sql_values = db::auto_quote($sql_values, ['datetime_added']);
 
 		// Insert
@@ -46,8 +46,8 @@ class User extends Model {
 		$sql_values = [
 			'first_name' => $input['first_name'],
 			'last_name' => $input['last_name'],
-			'email' => $input['email'],
-			'password' => $input['password']
+			'date_of_birth' => $input['date_of_birth'],
+			'gender' => $input['gender']
 		];
 
 		// Ensure values are encompassed with quote marks
@@ -57,8 +57,61 @@ class User extends Model {
 		db::update('user', $sql_values, "WHERE user_id = {$this->user_id}");
 		
 		// Return a new instance of this user as an object
-		return new User($this->user_id);
+		// return new User($this->user_id);
 
 	}
 
+	//created so I could get list of users
+	public function getUsers() {
+
+		$sql = "
+			SELECT *
+			FROM user
+			";
+
+
+		return db::execute($sql);
+
+	}
+
+	public function userInfo($id) {
+		
+		$sql = "
+			SELECT *
+			FROM user
+			WHERE user_id = {$id}
+			";
+
+
+
+		return db::execute($sql);
+	}
+
+	public function removeUser($user_id) {
+
+		$sql = "SELECT invoice.invoice_id
+				FROM invoice
+				WHERE invoice.user_id = $user_id;";
+		$invoicestodelete = db::execute($sql);
+
+		/*had tried to concat queries by including ";" so I could
+		do multiple queries with same call to DB*/
+		$sql = "DELETE FROM user
+				WHERE user.user_id = $user_id
+				LIMIT 1;";
+		db::execute($sql);
+
+		$sql = "DELETE FROM invoice
+				WHERE user_id = $user_id;";
+		db::execute($sql);
+
+		while($item = $invoicestodelete->fetch_assoc()) {
+		$sql = "DELETE FROM line_item
+				WHERE invoice_id = '{$item['invoice']}';";
+		}
+
+		db::execute($sql);
+	}
+
+	
 }

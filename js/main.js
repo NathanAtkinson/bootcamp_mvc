@@ -22,7 +22,14 @@
 
 	// Do something when the AJAX request has returned in success
 	form.on('xhrSuccess', function(e, data) {
+		// if a redirect key is received, then do this.
+		if (data.redirect) {
+			location.href = data.redirect;
+		} else if (data.notice) {
+			// alert user of error
+		}
 		$('body').append('<p>Received Data: ' + JSON.stringify(data) + '</p>');
+
 	});
 
 	// Do something when the AJAX request has returned with an error
@@ -31,3 +38,36 @@
 	});
 
 })();
+
+
+
+
+$(function() {
+
+	$('body').click('button', function(e) {
+		// e.preventDefault();
+		console.log('Button pressed');
+
+	});
+
+	$('button#add-item').click(function() {
+		console.log(this);
+		sibs = $(this).siblings();
+		console.log(sibs);
+		$product_name = $(this).siblings("input[name='product_id']").val();
+		// $quantity = $(this).siblings().attr('name', 'quantity').val();
+
+		// to try
+		var $quantity = $(this).parent().children("input[name='quantity']").val();
+
+		console.log('name' + $product_name);
+		console.log('quantity' + $quantity);
+
+	});
+
+	
+
+
+
+
+});

@@ -21,4 +21,6 @@ extract($controller->view->vars);
 
 <!-- Notice this welcome variable was created above and passed into the view -->
 <h3><?php echo $welcome; ?></h3>
-<h3><?php echo 'YEAH!!'; ?></h3>
+<a href="/users">Users</a><br>
+<a href="/invoices">Invoice List</a><br>
+<a href="/inventory">Product List</a><br>
