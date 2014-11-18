@@ -25,14 +25,20 @@ Router::add('/invoices/process_invoice', '/app/controllers/invoices/invoice_proc
 Router::add('/inventory', '/app/controllers/inventory.php');
 
 
-//for examples
-Router::add('/new_customer', '/app/controllers/new_customer.php');
-Router::add('/customer/form', '/app/controllers/customer_process_form.php');
-Router::add('/customer/process_form', '/app/controllers/process_form.php');
-Router::add('/customer/list', '/app/controllers/customer_list.php');
-Router::add('/customer/remove', '/app/controllers/remove_customer.php');
+// //for examples
+// Router::add('/new_customer', '/app/controllers/new_customer.php');
+// Router::add('/customer/form', '/app/controllers/customer_process_form.php');
+// Router::add('/customer/process_form', '/app/controllers/process_form.php');
+// Router::add('/customer/list', '/app/controllers/customer_list.php');
+// Router::add('/customer/remove', '/app/controllers/remove_customer.php');
 
 
+
+// Router::add('/login', '/app/controllers/login_form.php');
+// Router::add('/logout', '/app/controllers/login_form.php');
+// Router::add('/process_login', '/app/controllers/process_login.php');
+// Router::add('/account', '/app/controllers/logged_in.php');
+// Router::add('/delete_invoice', '/app/controllers/delete_invoice.php');
 
 
 

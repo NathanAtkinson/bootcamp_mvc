@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui" />
-	<title>Page Title</title>
+	<title>Random Store</title>
 	
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="/bower_components/ReptileForms/dist/reptileforms.min.css">

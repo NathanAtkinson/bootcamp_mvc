@@ -9,11 +9,10 @@ class Controller extends AppController {
 		$inv = new Invoice(82);
 		$results = $inv->invoiceList();
 		
-		$this->view->output = "<table><tr><td>Invoice #</td><td>Customer</td><td>Sale Date</td><td>Total</td></tr>";
+		$this->view->output = "<table border=\"1\"><tr><td>Invoice #</td><td>Customer</td><td>Sale Date</td><td>Total</td></tr>";
 		
 		while ($row = $results->fetch_assoc()) {
 			$grandtotal += $row['total'];
-
 			$invoice_list = new InvoiceListViewFragment;
 			$invoice_list->invoice_id = $row['invoice_id'];
 			$invoice_list->first_name = $row['first_name'];
@@ -22,19 +21,14 @@ class Controller extends AppController {
 			$invoice_list->total = $row['total'];
 			$this->view->output .= $invoice_list->render();
 		}
-
 		$this->view->output .= '<tr><td></td><td></td><td>' . 'Total: ' . '</td><td>' . $grandtotal .  '</td></tr></table>';
-
 	}
 }
 $controller = new Controller();
 
-// Extract Main Controller Vars
 extract($controller->view->vars);
-
 ?>
 
-<!-- Notice this welcome variable was created above and passed into the view -->
 <h3><?php echo $welcome; ?></h3>
 <h3><?php echo $output; ?></h3>
 

@@ -4,10 +4,7 @@
 class Controller extends AppController {
 	protected function init() {
 		
-		// Send a variable to the main view
 		$this->view->welcome = 'Inventory List';
-		// Send a variable to a sub view
-		// $this->view->primary_header->welcome = 'Welcome Student!';
 
 		$sql = "
 			SELECT *
@@ -17,7 +14,7 @@ class Controller extends AppController {
 		// Execute
 		$results = db::execute($sql);
 		
-		$this->view->products = "<table><tr><td>Item Number</td><td>Name</td><td>Description</td><td>Price</td></tr>";
+		$this->view->products = "<table border=\"1\"><tr><td>Item Number</td><td>Name</td><td>Description</td><td>Price</td></tr>";
 		
 		// Loop Rows
 		while ($row = $results->fetch_assoc()) {

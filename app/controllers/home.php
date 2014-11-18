@@ -4,11 +4,7 @@
 class Controller extends AppController {
 	protected function init() {
 		
-		// Send a variable to the main view
-		$this->view->welcome = 'Welcome to MVC';
-
-		// Send a variable to a sub view
-		$this->view->primary_header->welcome = 'Welcome Student!';
+		
 
 	}
 }
